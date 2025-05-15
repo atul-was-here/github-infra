@@ -18,3 +18,10 @@ resource "github_repository" "cs50-python" {
  visibility  = "public"
  auto_init   = true
 }
+
+resource "github_repository" "learning-go" {
+ name        = "learning-go"
+ description = "My notes and solutions for book Learning Go by Jon Bodner" 
+ visibility  = "public"
+ auto_init   = true
+}
