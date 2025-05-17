@@ -25,3 +25,10 @@ resource "github_repository" "learning-go" {
  visibility  = "public"
  auto_init   = true
 }
+
+resource "github_repository" "aws-workshops" {
+ name        = "aws-workshops"
+ description = "My notes and solutions for AWS Workshops Implementations" 
+ visibility  = "public"
+ auto_init   = true
+}
