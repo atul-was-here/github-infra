@@ -32,3 +32,16 @@ resource "github_repository" "aws-workshops" {
  visibility  = "public"
  auto_init   = true
 }
+
+
+resource "github_repository_environment" "repo_environment" {
+  repository       = github_repository.aws-workshops.name
+  environment      = "test"
+}
+
+resource "github_actions_environment_variable" "example_variable" {
+  repository       = github_repository.aws-workshops.name
+  environment      = github_repository_environment.repo_environment.environment
+  variable_name    = "NAME"
+  value            = "ATUL"
+}
