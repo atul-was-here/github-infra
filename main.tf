@@ -33,6 +33,13 @@ resource "github_repository" "aws-workshops" {
  auto_init   = true
 }
 
+resource "github_repository" "eloquent-js" {
+ name        = "aws-workshops"
+ description = "My notes and solutions for Eloquent JS Book" 
+ visibility  = "public"
+ auto_init   = true
+}
+
 
 resource "github_repository_environment" "repo_environment" {
   repository       = github_repository.aws-workshops.name
