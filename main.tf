@@ -33,14 +33,6 @@ resource "github_repository" "aws-workshops" {
  auto_init   = true
 }
 
-resource "github_repository" "eloquent-js" {
- name        = "aws-workshops"
- description = "My notes and solutions for Eloquent JS Book" 
- visibility  = "public"
- auto_init   = true
-}
-
-
 resource "github_repository_environment" "repo_environment" {
   repository       = github_repository.aws-workshops.name
   environment      = "test"
@@ -51,4 +43,26 @@ resource "github_actions_environment_variable" "example_variable" {
   environment      = github_repository_environment.repo_environment.environment
   variable_name    = "NAME"
   value            = "ATUL"
+}
+
+resource "github_repository" "python-scripts" {
+ name        = "python-scripts"
+ description = "My repository for python scripts"
+ visibility  = "public"
+ auto_init   = true
+}
+
+resource "github_repository" "eloquent-js" {
+ name        = "eloquent-js"
+ description = "My repository for eloquent-js solutions"
+ visibility  = "public"
+ auto_init   = true
+}
+
+
+resource "github_repository" "gh_workflows_test" {
+ name        = "gh-workflows-test"
+ description = "My repository for testing github action workflows"
+ visibility  = "public"
+ auto_init   = true
 }
