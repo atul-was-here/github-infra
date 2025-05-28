@@ -66,3 +66,27 @@ resource "github_repository" "gh_workflows_test" {
  visibility  = "public"
  auto_init   = true
 }
+
+
+data "github_user" "current" {
+  username = "atul-was-here"
+}
+
+locals {
+  key_rotation_test_environments =  ["dev", "qa", "production"]
+}
+
+resource "github_repository_environment" "key_rotation_test_environment" {
+  count = length(local.key_rotation_test_environments)
+  environment         = local.key_rotation_test_environments[count.index]
+  repository          = github_repository.gh_workflows_test.name
+  prevent_self_review = false
+  reviewers {
+    users = [data.github_user.current.id]
+  }
+  deployment_branch_policy {
+    protected_branches     = true
+    custom_branch_policies = false
+  }
+}
+
